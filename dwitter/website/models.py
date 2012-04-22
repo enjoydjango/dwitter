@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Tweet(models.Model):
     message = models.TextField(blank=True, max_length=140)
     timestamp = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name="tweets")
 
     def __unicode__(self):
         return self.message

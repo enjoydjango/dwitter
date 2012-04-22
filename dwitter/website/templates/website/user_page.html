@@ -1,0 +1,40 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+
+<h2>@{{ user.username }}</h2>
+<div id="bio"><b>Bio:</b> <em>{{ user.profile.bio }}</em></div>
+<br/>
+<ul>
+{% for tweet in user.tweets.all %}
+    <li>{{ tweet.message|lower|capfirst|urlize }}<br/>
+    <em><a href="/user/{{ tweet.user.username }}/status/{{ tweet.id }}/">{{ tweet.timestamp|timesince }} ago</a></em>
+    </li>
+{% empty %}
+    This user has no tweets :(
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+{% block sidebar %}
+
+<h3>Following</h3>
+<ul>
+{% for profile in user.profile.following.all %}
+    <li><b><a href="/user/{{ profile.user.username }}/">@{{ profile.user.username }}</a></li>
+{% empty %}
+    Following nobody.
+{% endfor %}
+</ul>
+
+<h3>Followers</h3>
+<ul>
+{% for profile in user.profile.followers.all %}
+    <li><a href="/user/{{ profile.user.username }}/">@{{ profile.user.username }}</a></li>
+{% empty %}
+    No followers.
+{% endfor %}
+</ul>
+
+{% endblock %}
