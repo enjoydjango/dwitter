@@ -2,10 +2,10 @@
 
 
 {% block content %}
-
-<ul>
+<h1>Timeline</h1>
+<ul class="tweets">
 {% for tweet in tweets %}
-    <li>{{ tweet.user_name }}: {{ tweet.message|lower|capfirst|urlize }} ({{ tweet.timestamp|timesince }} ago)</li>
+    <li><strong>@{{ tweet.user_name }}</strong>{{ tweet.message|lower|capfirst|urlize }} <em>({{ tweet.timestamp|timesince }} ago)</em></li>
 {% empty %}
     No tweets in this timeline!
 {% endfor %}
