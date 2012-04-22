@@ -5,7 +5,7 @@
 
 <ul>
 {% for tweet in tweets %}
-    <li>{{ tweet.user_name }}: {{ tweet.message|lower|capfirst|urlize }} ({{ tweet.timestamp|timesince }})</li>
+    <li>{{ tweet.user_name }}: {{ tweet.message|lower|capfirst|urlize }} ({{ tweet.timestamp|timesince }} ago)</li>
 {% empty %}
     No tweets in this timeline!
 {% endfor %}
