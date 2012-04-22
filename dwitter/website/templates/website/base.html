@@ -1,200 +1,82 @@
-<html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <title>{% block title %}Django{% endblock %}</title>
-        <style type="text/css" media="screen">
-            html,body{
-                background-color:#0B8D02;
-                font: normal 1.1em "Lucida Grande", Arial, Helvetica;
-                color:#333;
-                margin:0px;
-                padding:0px;
-            }
-            a{
-                color:inherit;
-                text-decoration:none;
-            }
-            a:hover{
-                text-decoration:underline;
-            }
-            .clear{
-                clear:both;
-            }
-            #header{
-                width:720px;
-                margin:0 auto;
-                border-radius: 10px;
-            }
-            #container{
-                width:720px;
-                background-color:white;
-                margin:0 auto;
-                border-radius: 10px;
-                margin-bottom:30px;
-            }
-            #container_left{
-                float:left;
-                width:514px;
-                padding:10px;
-            }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>dwitter</title>
+    <meta name="description" content="">
+    <meta name="author" content="enjoydjango.com">
 
-            #container_right{
-                float:right;
-                width:158px;
-                color:white;
-                background-color:#076B00;
-                min-height:700px;
-                padding:10px;
-                -webkit-border-top-right-radius: 10px;
-                -webkit-border-bottom-right-radius: 10px;
-                -moz-border-radius-topright: 10px;
-                -moz-border-radius-bottomright: 10px;
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-            }
-            h1{
-                color:white;
-                padding-top:10px;
-            }
-            ul{
-                list-style-type:none;
-                width:100%;
-                font-size:0.9em;
-                margin:0px;
-                padding:0px;
-            }
-            ul li{
-                margin-top:10px;
-                border-top:1px solid #ccc;
-                padding:5px;
-                padding-top:12px;
-            }
-            li em{
-                font-size:0.65em;
-            }
-            li a{
-                color:green;
-                font-weight:bold;
-            }
-            li em a{
-                color:#555;
-            }
-
-            #bio{
-                font-size:0.65em;
-            }
-            #container_right h2{
-                margin:0px;
-                padding:0px;
-                font-size:0.9em;
-                padding-bottom:10px;
-            }
-
-            #container_right a{
-                color:white;
-                font-weight:normal;
-            }
-            #container_right h3{
-                border-bottom:1px solid white;
-                font-size:0.8em;
-            }
-            #container_right ul{
-                list-style-type:square;
-                margin-left:20px;
-            }
-            #container_right li{
-                font-size:0.7em;
-                margin:0px;
-                padding:0px 8px 0px 4px;
-                border:0px;
-            }
-        ul.errorlist {
-            margin: 0;
-            padding: 0;
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
         }
-        .errorlist li {
-            background-color: red;
-            color: white;
-            display: block;
-            font-size: 10px;
-            margin: 0 0 3px;
-            padding: 4px 5px;
+        h1{
+            margin-bottom:20px;
         }
-        .add_tweet textarea{
-            width:100%;
-            height:70px;
-            font-size:17px;
-            margin-top:10px;
-        }
-        .add_tweet p{
-            text-align:right;
+        .tweets{
             margin:0px;
-            padding:0px;
+            list-style-type: none;
         }
-        .add_tweet p input{
-            width:100px;
-            font-size:18px;
+        .tweets strong{
+            display: block;
         }
+        .tweets em{
+            font-style:italic;
+        }
+        .tweets li{
+            border-bottom:1px dotted #ddd;
+            margin-bottom:10px;
+            padding-bottom:10px;
+        }
+        .container textarea{
+            width:100%;
+            height:100px;
+        }
+    </style>
 
-        #bio{
-            font-size:18px;
-            background-color:#D6FFD2;
-            padding:8px;
-        }
-        .follow{
-            background-color:#cfc;
-        }
-        .unfollow{
-            background-color:#fcc;
-            color:red;
-        }
-        .follow, .unfollow{
-            -webkit-border-radius: 10px;
-            -moz-border-radius: 10px;
-            border-radius: 10px;
-            padding:3px 10px 3px 10px;
-            font-size:12px;
-        }
-        .follow:hover, .unfollow:hover{
-            background-color:black;
-            color:white;
-        }
-        #login_form input {
-            font-size: 30px;
-        }
-        #login_form input[type=submit] {
-            width:100px;
-        }
+  </head>
 
-        </style>
-    </head>
-    <body>
-        <div id="header">
-            <h1><a href="/">dwitter</a></h1>
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">dwitter</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Timeline</a></li>
+              <li><a href="/users/">Users</a></li>
+            </ul>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <div id="container">
-            <div id="container_left">
-                <div id="post_tweet">
-                    <h3>
-                </div>
-                {% block content %}{% endblock %}
-            </div>
-            <div id="container_right">
-                Bienvenido a dwitter!
-                <h3>Menú</h3>
-                <ul>
-                    <li><b>Buscar dwitters</li>
-                </ul>
-                {% block sidebar %}{% endblock %}
-                <div style="text-align:center">
-                    <br/>
-                    <br/>
-                    <a href="http://djangoproject.com/" class="ponybadge" title="Magic! Ponies! Django! Whee!"><img src="http://media.jlmurphy.com/jlmurphy.com/media/icons/django_powered.gif" alt="pony powered"></a>
-                </div>
+    <div class="container">
 
-            </div>
-            <div class="clear"></div>
+      <div class="row">
+        <div class="span8">
+            {% block content %}{% endblock %}
         </div>
-    </body>
+        <div class="span4">
+            {% block sidebar %}{% endblock %}
+       </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>dwitter from <a href="http://enjoydjango.com">enjoydjango.com</a></p>
+      </footer>
+
+    </div>
+
+  </body>
 </html>
