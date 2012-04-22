@@ -13,6 +13,6 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^user/\w+/status/(\d+)/$', 'website.views.tweet_page'),
+    url(r'^tweet/(\d+)/$', 'website.views.tweet_page'),
     url(r'^$', 'website.views.timeline'),
 )
