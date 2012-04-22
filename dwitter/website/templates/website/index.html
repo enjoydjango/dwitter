@@ -1,6 +1,7 @@
-<html>
-<head></head>
-<body>
+{% extends "website/base.html" %}
+
+
+{% block content %}
 
 <ul>
 {% for tweet in tweets %}
@@ -10,5 +11,4 @@
 {% endfor %}
 </ul>
 
-</body>
-</html>
+{% endblock %}
