@@ -2,7 +2,13 @@
 <head></head>
 <body>
 
-{{ tweets }}
+<ul>
+{% for tweet in tweets %}
+    <li>{{ tweet.user_name }}: {{ tweet.message }} ({{ tweet.timestamp }})</li>
+{% empty %}
+    No tweets in this timeline!
+{% endfor %}
+</ul>
 
 </body>
 </html>
