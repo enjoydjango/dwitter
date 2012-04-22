@@ -15,6 +15,7 @@ class Tweet(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, unique=True)
     bio = models.CharField(blank=True, max_length=200)
+    followers = models.ManyToManyField("self", blank=True, symmetrical=False, related_name="following")
 
     def __unicode__(self):
         return self.user.username
