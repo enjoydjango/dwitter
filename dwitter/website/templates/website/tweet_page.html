@@ -3,8 +3,9 @@
 
 {% block content %}
 
-<h2>{{ tweet.user.username }}</h2>
-<p>{{ tweet.message|lower|capfirst|urlize }}</p>
-<em>{{ tweet.timestamp|timesince }} ago</em>
+<blockquote>
+  <p>{{ tweet.message|lower|capfirst|urlize }}</p>
+  <small>@{{ tweet.user.username }} - {{ tweet.timestamp|timesince }} ago</small>
+</blockquote>
 
 {% endblock %}
