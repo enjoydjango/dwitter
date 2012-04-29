@@ -5,7 +5,7 @@
 <h1>Timeline</h1>
 <ul class="tweets">
 {% for tweet in tweets %}
-    <li><strong>@{{ tweet.user.username }}</strong>{{ tweet.message|lower|capfirst|urlize }} <em>(<a href="/tweet/{{ tweet.id }}/">{{ tweet.timestamp|timesince }} ago</a>)</em></li>
+    <li><strong><a href="/user/{{ tweet.user.username }}/">@{{ tweet.user.username }}</a></strong>{{ tweet.message|lower|capfirst|urlize }} <em>(<a href="/tweet/{{ tweet.id }}/">{{ tweet.timestamp|timesince }} ago</a>)</em></li>
 {% empty %}
     No tweets in this timeline!
 {% endfor %}
