@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h2>@{{ user.username }}</h2>
-<div id="bio"><b>Bio:</b> <em>{{ user.profile.bio }}</em></div>
+<h2>@{{ page_user.username }}</h2>
+<div id="bio"><em>{{ page_user.profile.bio }}</em></div>
 <br/>
 <ul>
-{% for tweet in user.tweets.all %}
+{% for tweet in page_user.tweets.all %}
     <li>{{ tweet.message|lower|capfirst|urlize }}<br/>
     <em><a href="/tweet/{{ tweet.id }}/">{{ tweet.timestamp|timesince }} ago</a></em>
     </li>
@@ -21,7 +21,7 @@
 
 <h3>Following</h3>
 <ul>
-{% for profile in user.profile.following.all %}
+{% for profile in page_user.profile.following.all %}
     <li><b><a href="/user/{{ profile.user.username }}/">@{{ profile.user.username }}</a></li>
 {% empty %}
     Following nobody.
@@ -30,7 +30,7 @@
 
 <h3>Followers</h3>
 <ul>
-{% for profile in user.profile.followers.all %}
+{% for profile in page_user.profile.followers.all %}
     <li><a href="/user/{{ profile.user.username }}/">@{{ profile.user.username }}</a></li>
 {% empty %}
     No followers.
