@@ -4,14 +4,12 @@
 {% block content %}
 <h1>Timeline</h1>
 
-{% if user.is_authenticated %}
 <form action="" method="post" class="add_tweet">
     What's going on?<br/>
     {{ form.message }}
     {% csrf_token %}
     <p><input type="submit" value="Tweet!" class="btn btn-primary"></p>
 </form>
-{% endif %}
 
 <ul class="tweets">
 {% for tweet in tweets %}
