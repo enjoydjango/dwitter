@@ -17,3 +17,10 @@ def mention(value):
     #     (reverse('user-page', args=u.groups()), u.groups()[0]), value)
 
 mention.is_safe = True
+
+
+@register.inclusion_tag('website/toggle_follow.html', takes_context=True)
+def follow_or_unfollow_link(context, user, user2):
+    context['is_friend'] = user2 in user.following.all()
+    context['target_user'] = user2
+    return context

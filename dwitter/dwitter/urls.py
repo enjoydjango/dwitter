@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tweet/(\d+)/$', 'website.views.tweet_page', name='tweet-page'),
     url(r'^user/(\w+)/$', 'website.views.user_page', name='user-page'),
+    url(r'^user/(\w+)/toggle/$', 'website.views.toggle_follow', name='toggle-follow'),
     url(r'^users/$', 'website.views.users_list', name='users-list'),
     url(r'^$', 'website.views.timeline', name='timeline'),
 )

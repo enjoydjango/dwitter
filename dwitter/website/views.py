@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
 from website.models import Tweet
@@ -34,3 +35,17 @@ def user_page(request, username):
 def users_list(request):
     users = User.objects.all()
     return render(request, 'website/users_list.html', {'users': users})
+
+
+def toggle_follow(request, username):
+    profile = get_object_or_404(User, username=username).profile
+
+    if profile == request.user.profile:
+        return HttpResponseRedirect(reverse('timeline'))
+
+    if profile in request.user.profile.following.all():
+        request.user.profile.following.remove(profile)
+    else:
+        request.user.profile.following.add(profile)
+
+    return HttpResponseRedirect(reverse('user-page', args=[request.user.username]))
