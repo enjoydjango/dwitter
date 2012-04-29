@@ -22,7 +22,7 @@
 <h3>Following</h3>
 <ul>
 {% for profile in user.profile.following.all %}
-    <li><b><a href="{% url user-page {{ profile.user.username }} %}">@{{ profile.user.username }}</a></li>
+    <li><b><a href="{% url user-page profile.user.username %}">@{{ profile.user.username }}</a></li>
 {% empty %}
     Following nobody.
 {% endfor %}
@@ -31,7 +31,7 @@
 <h3>Followers</h3>
 <ul>
 {% for profile in user.profile.followers.all %}
-    <li><a href="{% url user-page {{ profile.user.username }} %}">@{{ profile.user.username }}</a></li>
+    <li><a href="{% url user-page profile.user.username %}">@{{ profile.user.username }}</a></li>
 {% empty %}
     No followers.
 {% endfor %}
