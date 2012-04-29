@@ -28,4 +28,4 @@ def tweet_page(request, tweet_id):
 
 def user_page(request, username):
     user = get_object_or_404(User, username=username)
-    return render(request, 'website/user_page.html', {'user': user})
+    return render(request, 'website/user_page.html', {'page_user': user})
