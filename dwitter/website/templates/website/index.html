@@ -3,6 +3,16 @@
 
 {% block content %}
 <h1>Timeline</h1>
+
+{% if user.is_authenticated %}
+<form action="" method="post" class="add_tweet">
+    What's going on?<br/>
+    {{ form.message }}
+    {% csrf_token %}
+    <p><input type="submit" value="Tweet!" class="btn btn-primary"></p>
+</form>
+{% endif %}
+
 <ul class="tweets">
 {% for tweet in tweets %}
     <li><strong><a href="{% url user-page tweet.user.username %}">@{{ tweet.user.username }}</a></strong>{{ tweet.message|lower|capfirst|urlize }} <em>(<a href="{% url tweet-page tweet.id %}">{{ tweet.timestamp|timesince }} ago</a>)</em></li>
