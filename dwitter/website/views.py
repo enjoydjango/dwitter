@@ -29,3 +29,8 @@ def tweet_page(request, tweet_id):
 def user_page(request, username):
     user = get_object_or_404(User, username=username)
     return render(request, 'website/user_page.html', {'user': user})
+
+
+def users_list(request):
+    users = User.objects.all()
+    return render(request, 'website/users_list.html', {'users': users})
