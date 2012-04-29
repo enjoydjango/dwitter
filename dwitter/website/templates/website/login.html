@@ -1,0 +1,20 @@
+{% extends "website/base.html" %}
+
+
+{% block content %}
+<h1>Log in</h1>
+
+<form method="post" action="{% if next %}?next={{ next }}{% endif %}">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    {{ form.username }}
+    <label for="password">Password:</label>
+    {{ form.password }}
+    {% if form.errors %}
+       <p>Invalid username or password.</p>
+    {% endif %}
+    <p>
+      <input class="btn btn-primary" type="submit" value="Log in"/>
+    </p>
+</form>
+{% endblock %}
