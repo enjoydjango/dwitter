@@ -43,9 +43,9 @@ def toggle_follow(request, username):
     if profile == request.user.profile:
         return HttpResponseRedirect(reverse('timeline'))
 
-    if profile in request.user.profile.following.all():
+    if request.user.profile.following.filter(user=profile.user).count():
         request.user.profile.following.remove(profile)
     else:
         request.user.profile.following.add(profile)
 
-    return HttpResponseRedirect(reverse('user-page', args=[request.user.username]))
+    return HttpResponseRedirect(reverse('users-list'))

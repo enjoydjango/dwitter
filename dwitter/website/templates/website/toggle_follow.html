@@ -1,0 +1,5 @@
+{% if is_friend %}
+<a href="{% url website.views.toggle_follow  target_user.username %}" class="btn btn-mini btn-danger">Unfollow</a>
+{% else %}
+<a href="{% url website.views.toggle_follow  target_user.username %}" class="btn btn-mini btn-primary">Follow</a>
+{% endif %}
