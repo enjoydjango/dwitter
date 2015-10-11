@@ -1,7 +1,7 @@
 dwitter
 =======
 
-Project developed during the enjoydjango.com course.
+Educational project to learn django using https://speakerdeck.com/jorgebastida/python-django
 
 
 Authors
