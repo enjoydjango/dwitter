@@ -18,6 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'website.views.timeline'),
     url(r'^tweet/(\d+)/$', 'website.views.tweet_page'),
+    url(r'^$', 'website.views.timeline'),
 ]
