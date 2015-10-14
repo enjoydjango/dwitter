@@ -1,11 +1,9 @@
 from datetime import datetime
-from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
-from django.contrib.auth.models import User
+from django.shortcuts import render, get_object_or_404
 
-from website.models import Tweet
+from website.models import User, Tweet
 from website.forms import TweetForm
-
 
 def timeline(request):
     if request.method == "POST":
