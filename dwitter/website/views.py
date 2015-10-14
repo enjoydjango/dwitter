@@ -1,8 +1,7 @@
 from datetime import datetime
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.models import User
 
-from website.models import Tweet
+from website.models import User, Tweet
 
 
 def timeline(request):
