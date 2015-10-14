@@ -8,7 +8,7 @@ class User(AbstractUser):
     followers = models.ManyToManyField("self", blank=True, symmetrical=False, related_name="following")
 
     def __unicode__(self):
-        return self.user.username
+        return self.username
 
 
 class Tweet(models.Model):
