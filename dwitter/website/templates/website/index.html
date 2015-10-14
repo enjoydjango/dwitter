@@ -13,7 +13,7 @@
 
 <ul class="tweets">
 {% for tweet in tweets %}
-    <li><strong><a href="{% url "user-page" tweet.user.username %}">@{{ tweet.user.username }}</a></strong>{{ tweet.message|lower|capfirst|urlize }} <em>(<a href="{% url "tweet-page" tweet.id %}">{{ tweet.timestamp|timesince }} ago</a>)</em></li>
+    <li><strong><a href="{% url 'user-page' tweet.user.username %}">@{{ tweet.user.username }}</a></strong>{{ tweet.message|lower|capfirst|urlize }} <em>(<a href="{% url 'tweet-page' tweet.id %}">{{ tweet.timestamp|timesince }} ago</a>)</em></li>
 {% empty %}
     No tweets in this timeline!
 {% endfor %}
