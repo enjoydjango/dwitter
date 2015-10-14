@@ -1,0 +1,14 @@
+{% extends "website/base.html" %}
+
+
+{% block content %}
+<h1>Timeline</h1>
+<ul class="tweets">
+{% for tweet in tweets %}
+    <li><strong>@{{ tweet.user_name }}</strong>{{ tweet.message|lower|capfirst|urlize }} <em>({{ tweet.timestamp|timesince }} ago)</em></li>
+{% empty %}
+    No tweets in this timeline!
+{% endfor %}
+</ul>
+
+{% endblock %}
