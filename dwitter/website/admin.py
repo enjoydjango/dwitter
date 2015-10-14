@@ -1,14 +1,14 @@
 from django.contrib import admin
-from website.models import Tweet, Profile
+from website.models import Tweet, User
 
 
 class TweetAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'message', 'timestamp')
 
 
-class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user')
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('id', 'username', 'bio')
 
 
 admin.site.register(Tweet, TweetAdmin)
-admin.site.register(Profile, ProfileAdmin)
+admin.site.register(User, UserAdmin)
