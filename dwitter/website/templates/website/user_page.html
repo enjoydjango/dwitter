@@ -8,7 +8,7 @@
 <ul>
 {% for tweet in page_user.tweets.all %}
     <li>{{ tweet.message|lower|capfirst|urlize }}<br/>
-    <em><a href="{% url "tweet-page" tweet.id %}">{{ tweet.timestamp|timesince }} ago</a></em>
+    <em><a href="{% url 'tweet-page' tweet.id %}">{{ tweet.timestamp|timesince }} ago</a></em>
     </li>
 {% empty %}
     This user has no tweets :(
@@ -22,7 +22,7 @@
 <h3>Following</h3>
 <ul>
 {% for following in page_user.following.all %}
-    <li><a href="{% url "user-page" following.username %}">@{{ following.username }}</a></li>
+    <li><a href="{% url 'user-page' following.username %}">@{{ following.username }}</a></li>
 {% empty %}
     Following nobody.
 {% endfor %}
@@ -31,7 +31,7 @@
 <h3>Followers</h3>
 <ul>
 {% for follower in page_user.followers.all %}
-    <li><a href="{% url "user-page" follower.username %}">@{{ follower.username }}</a></li>
+    <li><a href="{% url 'user-page' follower.username %}">@{{ follower.username }}</a></li>
 {% empty %}
     No followers.
 {% endfor %}
