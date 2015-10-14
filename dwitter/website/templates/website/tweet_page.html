@@ -5,7 +5,7 @@
 
 <blockquote>
   <p>{{ tweet.message|lower|capfirst|urlize }}</p>
-  <small><a href="{% url user-page tweet.user.username %}">@{{ tweet.user.username }}</a> - {{ tweet.timestamp|timesince }} ago</small>
+  <small><a href="{% url 'user-page' tweet.user.username %}">@{{ tweet.user.username }}</a> - {{ tweet.timestamp|timesince }} ago</small>
 </blockquote>
 
 {% endblock %}
