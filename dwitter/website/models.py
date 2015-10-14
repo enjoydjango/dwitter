@@ -1,6 +1,5 @@
 from django.db import models
-from django.db.models.signals import post_save
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 
 class Tweet(models.Model):
@@ -12,17 +11,10 @@ class Tweet(models.Model):
         return self.message
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, unique=True)
+class User(AbstractUser):
+
     bio = models.CharField(blank=True, max_length=200)
     followers = models.ManyToManyField("self", blank=True, symmetrical=False, related_name="following")
 
     def __unicode__(self):
         return self.user.username
-
-
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-
-post_save.connect(create_user_profile, sender=User)
