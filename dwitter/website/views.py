@@ -37,14 +37,14 @@ def users_list(request):
 
 
 def toggle_follow(request, username):
-    profile = get_object_or_404(User, username=username).profile
+    user = get_object_or_404(User, username=username)
 
-    if profile == request.user.profile:
+    if user == request.user:
         return HttpResponseRedirect(reverse('timeline'))
 
-    if request.user.profile.following.filter(user=profile.user).count():
-        request.user.profile.following.remove(profile)
+    if request.user.following.filter(username=username).count():
+        request.user.following.remove(user)
     else:
-        request.user.profile.following.add(profile)
+        request.user.following.add(user)
 
     return HttpResponseRedirect(reverse('users-list'))

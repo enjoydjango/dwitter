@@ -21,6 +21,6 @@ mention.is_safe = True
 
 @register.inclusion_tag('website/toggle_follow.html', takes_context=True)
 def follow_or_unfollow_link(context, user, user2):
-    context['is_friend'] = bool(user.profile.following.filter(user=user2).count())
+    context['is_friend'] = bool(user.following.filter(username=user2.username).count())
     context['target_user'] = user2
     return context
