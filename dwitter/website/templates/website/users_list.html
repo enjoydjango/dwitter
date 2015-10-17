@@ -5,7 +5,7 @@
 <h2>dwitter users</h2>
 <ul>
     {% for user in users %}
-        <li><a href="{% url user-page user.username %}">@{{ user.username }}</a><br />
+        <li><a href="{% url 'user-page' user.username %}">@{{ user.username }}</a><br />
         {{ user.profile.bio }}
         </li>
     {% empty %}
